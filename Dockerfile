@@ -17,4 +17,4 @@ COPY --from=build-env /app/out .
 
 # Expose port and set entry point
 EXPOSE 8080
-ENTRYPOINT ["dotnet", "YourAppName.dll"]
+ENTRYPOINT ["dotnet", "EmployeeManagment.dll"]
