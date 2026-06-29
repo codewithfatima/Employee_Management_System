@@ -1,5 +1,5 @@
 ### 
-Employee Management System
+### Employee Management System
 This project is an Employee Management System built with .NET and configured for database management to help streamline staff record tracking and department administration.
 
 Features
