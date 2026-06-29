@@ -1,0 +1,128 @@
+﻿@page
+@model EmployeeManagment.Pages.Employees.IndexModel
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Employee List</h2>
+        <a asp-page="Create" class="btn btn-success">
+            + Create Employee
+        </a>
+    </div>
+
+    <!-- FILTER CARD -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <form method="get" class="row g-3 align-items-center">
+
+                <div class="col-md-5">
+                    <input type="text"
+                           name="searchTerm"
+                           class="form-control"
+                           placeholder="Search name, email, or phone..."
+                           value="@Request.Query["searchTerm"]" />
+                </div>
+
+                <div class="col-md-4">
+                    <select name="searchDept" class="form-select">
+                      
+                            <option value="">All Departments</option>
+                        @foreach (var dept in Model.AllDepartments) 
+                        {
+                            <option value="@dept.Id">@dept.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-3 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary w-100">
+                        Search
+                    </button>
+                    <a asp-page="./Index" class="btn btn-outline-secondary w-100">
+                        Clear
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- TABLE CARD -->
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+                <table class="table table-hover table-striped mb-0 align-middle">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Salary</th>
+                            <th>Department</th>
+                            <th style="width: 160px;">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (Model.Employees != null && Model.Employees.Any())
+                        {
+                            foreach (var item in Model.Employees)
+                            {
+                                <tr>
+                                    <td>@item.FirstName</td>
+                                    <td>@item.LastName</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Phone</td>
+                                    <td>
+                                        <span class="badge bg-info text-dark">
+                                            @item.Salary
+                                        </span>
+                                    </td>
+                                    <td>@item.Department?.Name</td>
+
+                                    <td>
+                                        <div class="d-flex gap-2">
+
+                                            <a asp-page="./Edit"
+                                               asp-route-id="@item.Id"
+                                               class="btn btn-sm btn-primary">
+                                                Edit
+                                            </a>
+
+                                            <form method="post"
+                                                  asp-page-handler="Delete"
+                                                  onsubmit="return confirm('Delete @item.FirstName?');">
+
+                                                <input type="hidden" name="id" value="@item.Id" />
+
+                                                <button type="submit"
+                                                        class="btn btn-sm btn-danger">
+                                                    Delete
+                                                </button>
+                                            </form>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" class="text-center text-muted py-4">
+                                    No employees found
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>

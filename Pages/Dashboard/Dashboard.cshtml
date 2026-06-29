@@ -1,0 +1,53 @@
+﻿@page
+@model EmployeeManagment.Pages.Dashboard.Dashboard;
+@{
+}
+
+<h2>Employee Management Dashboard </h2>
+<div>
+
+
+    <div class="row g-4 mt-5">
+
+        <!-- Total Employees -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-body text-center bg-success text-white rounded-3">
+                    <div class="mb-2 text-primary">
+                        <i class="bi bi-people-fill fs-1"></i>
+                    </div>
+                    <h6 class="text-white text-uppercase">Total Employees</h6>
+                    <h3 class="fw-bold mb-0">@Model.TotalEmployees</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Average Salary -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-body text-center  bg-warning text-white rounded-3">
+                    <div class="mb-2 text-success ">
+                        <i class="bi bi-cash-coin fs-1"></i>
+                    </div>
+                    <h6 class="text-muted text-uppercase">Average Salary</h6>
+                    <h3 class="fw-bold mb-0">@Model.AverageSalary.ToString("C")</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOal DEpartment -->
+        <div class="col-md-3 col-sm-6">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-body text-center  bg-primary text-white rounded-3">
+                    <div class="mb-2 text-success ">
+                        <i class="bi bi-cash-coin fs-1"></i>
+                    </div>
+                    <h6 class="text-white text-uppercase">Total Department</h6>
+                    <h3 class="fw-bold mb-0">@Model.TotalDepartments</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

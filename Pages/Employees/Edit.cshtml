@@ -1,0 +1,102 @@
+﻿@page
+@model EmployeeManagment.Pages.Employees.EditModel
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow-lg border-0">
+
+                <!-- HEADER -->
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">Edit Employee Details</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <form method="post">
+
+                        <input type="hidden" asp-for="Employee.Id" />
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Employee.FirstName" class="form-label"></label>
+                                <input asp-for="Employee.FirstName"
+                                       class="form-control"
+                                       placeholder="Enter first name..." />
+                                <span asp-validation-for="Employee.FirstName" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Employee.LastName" class="form-label"></label>
+                                <input asp-for="Employee.LastName"
+                                       class="form-control"
+                                       placeholder="Enter last name..." />
+                                <span asp-validation-for="Employee.LastName" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Employee.Email" class="form-label"></label>
+                            <input asp-for="Employee.Email"
+                                   class="form-control"
+                                   placeholder="Enter email..." />
+                            <span asp-validation-for="Employee.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Employee.Phone" class="form-label"></label>
+                            <input asp-for="Employee.Phone"
+                                   class="form-control"
+                                   placeholder="e.g. 12255..." />
+                            <span asp-validation-for="Employee.Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Employee.Salary" class="form-label"></label>
+                            <input asp-for="Employee.Salary"
+                                   class="form-control"
+                                   placeholder="Enter salary..." />
+                            <span asp-validation-for="Employee.Salary" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Employee.DepartmentId" class="form-label"></label>
+                            <select asp-for="Employee.DepartmentId"
+                                    asp-items="Model.DepartmentList"
+                                    class="form-select">
+                                <option value="">-- Select Department --</option>
+                            </select>
+                            <span asp-validation-for="Employee.DepartmentId" class="text-danger"></span>
+                        </div>
+
+                        <!-- BUTTONS -->
+                        <div class="d-flex justify-content-between">
+
+                            <a asp-page="Index" class="btn btn-outline-secondary">
+                                ← Cancel
+                            </a>
+
+                            <button type="submit" class="btn btn-success px-4">
+                                💾 Save Changes
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
