@@ -29,5 +29,11 @@ namespace EmployeeManagment.Pages.Dashboard
                 AverageSalary = await _context.Employees.AverageAsync(e=>(double)e.Salary);
             }
         }
+
+        public async Task<IQueryable> OnGetGroupBy(string DepartmentId)
+        {
+            var employees  = await _context.Employees.GroupBy(e=>e.DepartmentId);
+
+        }
     }
 }
